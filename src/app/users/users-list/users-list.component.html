@@ -1,6 +1,6 @@
 <div 
    class="container-fluid list-group">
-    <button type="button" class="list-group-item list-group-item-action active">
+    <button aria-label="user list title" type="button" class="list-group-item list-group-item-action active">
         All Users </button>
     <app-user-card *ngFor="let user of users" [user]="user"></app-user-card>
 </div>

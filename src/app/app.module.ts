@@ -10,6 +10,7 @@ import { PostsListComponent } from './posts/posts-list/posts-list.component';
 import { PostDetailsComponent } from './posts/post-details/post-details.component';
 import { CommentsListComponent } from './comments/comments-list/comments-list.component';
 import { CommentDetailsComponent } from './comments/comment-details/comment-details.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CommentDetailsComponent } from './comments/comment-details/comment-deta
     PostsListComponent,
     PostDetailsComponent,
     CommentsListComponent,
-    CommentDetailsComponent
+    CommentDetailsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
