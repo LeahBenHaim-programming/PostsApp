@@ -9,6 +9,7 @@ import { IData } from './data.interface';
 @Injectable({
   providedIn: 'root'
 })
+
 export class DataStorageService implements IData {
 
   baseUrl = "https://jsonplaceholder.typicode.com";
@@ -16,48 +17,15 @@ export class DataStorageService implements IData {
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<any> {
-    return this.http
-      .get<User[]>(
-        this.baseUrl + '/users'
-      )
-      .pipe(
-        map(users => {
-          return users.map(user => {
-            return {
-              // userName: user.userName,
-              ...user
-            };
-          });
-        })
-        // ,
-        // //Perform a side effect for every emission on the source Observable,
-        // //but return an Observable that is identical to the source.
-        // tap(users => {
-        //   this.users=users;
-        // })
-      );
+    return this.http.get<User[]>(this.baseUrl + '/users')
   }
 
   getPostsByUserId(userId: number): Observable<any> {
-    return this.http
-      .get<Post[]>(
-        this.baseUrl + '/users/' + userId + '/posts'
-      )
-      .pipe(
-        map(posts => {
-          return posts.map(post => {
-            return {
-              ...post
-            };
-          });
-        })
-      );
+    return this.http.get<Post[]>(this.baseUrl + '/users/' + userId + '/posts')
   }
 
   getCommentsByPostId(postId: number): Observable<any> {
     return this.http
-      .get<Post[]>(
-        this.baseUrl + '/posts/' + postId + '/comments'
-      )
+      .get<Post[]>(this.baseUrl + '/posts/' + postId + '/comments')
   }
 }

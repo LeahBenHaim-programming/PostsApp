@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ManagerService } from 'src/app/_services/manager.service';
 import { Comment } from 'src/app/_models/comment.model';
@@ -8,17 +8,17 @@ import { Comment } from 'src/app/_models/comment.model';
   templateUrl: './comments-list.component.html',
   styleUrls: ['./comments-list.component.scss']
 })
-export class CommentsListComponent implements OnInit ,OnDestroy{
+export class CommentsListComponent implements OnInit, OnDestroy {
 
-  comments:Comment[]=[];
+  comments: Comment[] = [];
   subscription: Subscription;
 
-  constructor(private managerService:ManagerService) { }
+  constructor(private managerService: ManagerService,private ngZone:NgZone) { }
 
   ngOnInit(): void {
     this.subscription = this.managerService.onCommentsUpdateByPost
     .subscribe(
-      response => this.comments = response,
+      response => this.comments =response? response:[],
     )
   }
 

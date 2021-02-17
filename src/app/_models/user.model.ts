@@ -6,6 +6,7 @@ export class User {
   public username: string;
   public email: string;
   public posts: Post[];
+
   //   constructor(name: string, desc: string, imagePath: string, ingredients: Ingredient[]) {
   //     this.name = name;
   //     this.description = desc;

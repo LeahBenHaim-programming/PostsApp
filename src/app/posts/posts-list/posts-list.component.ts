@@ -13,7 +13,7 @@ export class PostsListComponent implements OnInit, OnDestroy {
   posts: Post[] = [];
 
   subscription: Subscription;
-  
+
   constructor(private managerService: ManagerService) { }
 
   ngOnDestroy() {
@@ -23,7 +23,10 @@ export class PostsListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.managerService.onPostsUpdate
       .subscribe(
-        response => this.posts = response,
+        response => {
+          this.posts = response;
+          this.managerService.currentUser.posts = response
+        }
       )
   }
 }

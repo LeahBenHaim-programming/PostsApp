@@ -1,5 +1,4 @@
-<div class="row">
-    <div class="col-sm-6">
-        <app-comment-details  *ngFor="let comment of comments" [comment]="comment"> </app-comment-details>
-    </div>
+<div class="container-fluid">
+    <app-comment-details *ngFor="let comment of comments" [comment]="comment">
+    </app-comment-details>
 </div>
